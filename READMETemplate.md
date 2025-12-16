@@ -22,9 +22,11 @@ Short, clear description of what the project does and why it exists.
 - [License](#license)
 
 ## <a id="live-demo"></a> 🚀Live demo
-[Demo link](https://emil-mikaela-js-project-movies.netlify.app/)
+[Demo link](https://your-project.netlify.app/)
 
 ## <a id="screenshots"></a>📷 Screenshots
+Include one or more screenshots that show the main functionality and layout of the application.
+
 ### Screenshot 1 name
 
 <img src="./path-to-image-" alt="screenshot of project" />  
@@ -33,50 +35,37 @@ Caption Screenshot 1 description.
 
 ## <a id="about"></a>🔎 About Project
 Detailed project description.
+Describe the purpose of the project, what problem it solves, and the overall idea behind it.
+
 
 ## <a id="tech-stack"></a>📦 Tech Stack
-- React
-- React Router
-- JavaScript (ES6+)
-- Vite
-- TMDB API
-- CSS / Styled Components (or describe what you use)
+List the main technologies, frameworks, and tools used in the project.
+- Frontend framework/library
+- Routing solution (if applicable)
+- Programming language
+- Build tool / bundler
+- External APIs or services (if applicable)
+- Styling approach
 
 ## <a id="features"></a> 🧠 Features
-Add features here in list form.
+Outline the key features and functionality implemented in the application.
 
 ## <a id="objectives"></a> 🎯 Project Objectives
-- Build a **multi-page** React application
-- Practice **React Router** with dynamic routes
-- Fetch and render data from an external API
-- Combine `useState` and `useEffect`
-- Follow accessibility and clean code guidelines
+Describe the main goals of the project and what you aimed to practice or demonstrate.
 
 ### Required conditions
-- Movie list page
-- Movie detail page
-- Dynamic routing with React Router
-- Responsive design (320px → 1600px)
-- Accessible UI (Lighthouse score ≥ 95)
-- Clean, readable, and maintainable code
 
 ### Stretch Goals (optional)
-- Not Found page for invalid movie IDs (API 404 handling)
-- Loading states (spinners / placeholders)
-- Image loading fallbacks
-- Dropdown to switch movie categories (popular, upcoming, now playing)
-- Additional linked pages (genres, collections, production companies)
 
-## ♿ Accessibility
-The project follows accessibility best practices:
-- Semantic HTML
-- Proper alt text for all images
-- Sufficient color contrast
-- Keyboard navigable UI
-- Lighthouse score ≥ 95
+## <a id="accessibility"></a> ♿ Accessibility
+Explain how accessibility has been considered and which best practices are followed.
 
 ## <a id="architecture"></a> Architecture
+Describe the overall structure of the application and how the codebase is organized.
+
 ### <a id="folder-structure"></a> 🛠 Folder Structure
+Provide an overview of how folders and files are structured.
+
 ```text
 src/
 ├── components/
@@ -93,25 +82,22 @@ src/
 └── styles/
 ```
 ### <a id="pages--routes"></a> 🧭 Pages & Routes
+Describe the main pages in the application and how routing is handled.
 | Route | Description |
 
 ### <a id="data-flow-overview"></a> 🔄 Data Flow Overview
-#### Movie List Page
-- Fetches a list of movies from TMDB
-- Stores data in state
-- Renders movie cards
-- Each card links to `/movies/:id`
+Explain how data is fetched, stored, and passed through the application.
 
-#### Movie Detail Page
-- Reads `id` from URL using `useParams`
-- Fetches detailed movie data from TMDB
-- Handles loading and error states
-- Renders movie information
+#### Page 1
+
+#### Page 2
 
 ### 🔑 API Usage
-Tabell här
+Describe how external APIs or services are used, including endpoints, authentication, and error handling.
 
 ## <a id="run"></a> ▶️ Run Locally
+Provide instructions for how to set up and run the project on a local machine.
+
 ```bash
 git clone https://github.com/your-username/your-repo.git
 cd your-repo
@@ -120,15 +106,17 @@ npm run dev
 ```
 
 ## <a id="roadmap"></a> 🚗 Roadmap
-### Planning stage
-Berätta kort om planeringen  
+Describe the planning process, implementation phase, and future improvements.
+### Planning
+Brief description of initial planning and design decisions.
+Optional link to a planning document.
 <a href="/PLANNING.md">📄PLANNING.md</a>
 
 ### Excecution 
-Här kan du beskriva hur projektet genomfördes: designbeslut, kodstruktur, state‑hantering och eventuella utmaningar.
+Describe how the project was implemented, including architectural decisions, state management, and challenges encountered.
 
 ### Retrospect
-Samla retrospektiva reflektioner, lärdomar, tekniska insikter och förbättringsidéer.
+Summarize reflections, lessons learned, technical insights, and ideas for improvement.
 
 ## <a id="authors"></a> 🧑‍💻 Authors
 ### Your Name
@@ -140,5 +128,8 @@ Samla retrospektiva reflektioner, lärdomar, tekniska insikter och förbättring
 -  [LinkedIn](https://www.linkedin.com/)
 
 ## <a id="license"></a> 📄 License
+State the license or usage conditions for the project.
+
+or//
 This project was created as part of a Technigo course assignment.  
 For educational purposes only.
