@@ -23,9 +23,10 @@ const StyledBodyText = styled.p`
   }
 `
 
-export const BodyText = ({ text, textAlign, marginLeft, whiteSpace }) => {
+export const BodyText = ({ text, className, textAlign, marginLeft, whiteSpace }) => {
   return (
     <StyledBodyText 
+    className={className}
     textAlign={textAlign} 
     marginLeft={marginLeft}
     whiteSpace={whiteSpace}>

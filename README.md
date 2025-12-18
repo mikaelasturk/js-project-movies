@@ -53,8 +53,7 @@ Add features here in list form.
 - Follow accessibility and clean code guidelines
 
 ### Required conditions
-- Movie list page
-- Movie detail page
+- Minimum 2 pages
 - Dynamic routing with React Router
 - Responsive design (320px → 1600px)
 - Accessible UI (Lighthouse score ≥ 95)

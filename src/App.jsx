@@ -1,14 +1,25 @@
+import { Routes, Route } from 'react-router'
 import { ThemeProvider } from "styled-components"
+import { Layout } from "./components/layout/layout"
 import { theme, GlobalStyle } from "./styles/styles";
+import { 
+  Home, 
+  Movie, 
+  NotFound 
+} from "./pages/pages"
 
 export const App = () => {
   return (
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <main>
-          <h1>Movies</h1>
-        </main>
+          <Routes>
+            <Route element={<Layout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/movie/:id" element={<Movie />} /> 
+              <Route path="/notfound" element={<NotFound />} />
+            </Route>
+          </Routes> 
       </ThemeProvider>
     </>
   )

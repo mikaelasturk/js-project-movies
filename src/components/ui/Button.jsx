@@ -1,6 +1,3 @@
-import { StyledButton } from '../../styles/styles'
-
-
 export const Button = ({ variant, type, text, onClick, active } ) => {
   return (
     <StyledButton 

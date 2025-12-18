@@ -1,1 +1,2 @@
-export { BodyWrapper } from './BodyWrapper'
+export { BodyWrapper } from "./BodyWrapper"
+export { Layout } from "./Layout.jsx"
