@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
+import { NotFound } from "../pages/pages"; 
 import { MovieInfo } from "../components/cards/cards"
 import { BodyText } from "../components/typography/typography";
 import { Svg } from "../components/ui/ui";
@@ -36,26 +37,78 @@ const FlexWrapperRow = styled.div`
   }
 `
 
+const SpinnerWrap = styled.div`
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #000;
+`
+
+const Spinner = styled.div`
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.25);
+  border-top-color: rgba(255, 255, 255, 0.95);
+  animation: spin 0.9s linear infinite;
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+`
+
+const loaderTime = (ms) => new Promise((resolve) => setTimeout(resolve, ms)) 
+
 export const Movie = () => {
   const [movieDetails, setMovieDetails] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
   const { id } = useParams()
   
   useEffect(() => {
     if (!id) return
+
     const API_URL_DETAILS = `https://api.themoviedb.org/3/movie/${id}?api_key=a58868b333ba608ab720ea1d3cd907f2&language=en-US"`
+
     const fetchMovieDetails = async () => {
       try {
+        setLoading(true)
+        setError(null)
         const response = await fetch(API_URL_DETAILS)
+
+        if (response.status === 404) {
+          setError('notfound')
+          setMovieDetails(null)
+          return
+        }
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch movie details')
+        }
+
         const data = await response.json()
+        await loaderTime(2000)
         setMovieDetails(data)
       } catch (error) {
         console.error('Error fetching movies:', error)
+        setError(error.message)
+      } finally {
+        setLoading(false)
       }
-    }
+    } 
     
     fetchMovieDetails()
   }, [id])
 
+  if (loading) return (
+    <SpinnerWrap>
+      <Spinner />
+    </SpinnerWrap>
+  )
+  if (error === 'notfound') return <NotFound />
+  if (error) return <p>{error}</p>
  
   return (
     <FlexWrapperSpaceBetween $bg={getImageUrl(movieDetails?.backdrop_path)}>
@@ -65,8 +118,7 @@ export const Movie = () => {
         <BodyText text="Movies" />
         </FlexWrapperRow>
       </Link>
-      {!movieDetails && <p>Loading...</p>}
-      {movieDetails && <MovieInfo movie={movieDetails} />}
+      <MovieInfo movie={movieDetails} />
     </FlexWrapperSpaceBetween>
   )
 }
