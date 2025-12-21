@@ -1,8 +1,7 @@
-# README template
-Template to use for school projects
+# 🎬 Movies AppTemplate to use for school projects
 
-# Project Name 
-Short, clear description of what the project does and why it exists.
+A responsive multi-page React application built with React Router and The Movie Database (TMDB) API.
+The app allows users to browse popular movies and view detailed information for each title via dynamic routes.
 
 ## 📋 Table of Contents
 - [Live Demo](#live-demo)
@@ -32,15 +31,19 @@ Short, clear description of what the project does and why it exists.
 Caption Screenshot 1 description.
 
 ## <a id="about"></a>🔎 About Project
-Detailed project description.
+This project is a movie browsing application built with React and React Router.
+It fetches data from the TMDB API and displays a list of popular movies on the home page.
+Each movie links to a dedicated detail page using a dynamic route.
+
+The application handles loading states, API errors, and invalid movie IDs by displaying a custom Not Found page.
 
 ## <a id="tech-stack"></a>📦 Tech Stack
 - React
 - React Router
 - JavaScript (ES6+)
 - Vite
+- Styled Components
 - TMDB API
-- CSS / Styled Components (or describe what you use)
 
 ## <a id="features"></a> 🧠 Features
 Add features here in list form.
@@ -79,36 +82,75 @@ The project follows accessibility best practices:
 ```text
 src/
 ├── components/
-│   ├── MovieCard.jsx
-│   ├── Loader.jsx
-│   └── NotFound.jsx
+│   ├── cards/
+│   │   ├── MovieCard.jsx
+│   │   └── MovieInfo.jsx
+│   ├── layout/
+│   │   └── Layout.jsx
+│   ├── typography/
+│   │   ├── BodyText.jsx
+│   │   └── MovieTitle.jsx
+│   └── ui/
+│       ├── Button.jsx
+│       ├── Image.jsx
+│       ├── SpinnerLoader.jsx
+│       ├── Svg.jsx
+│       ├── Tag.jsx
+│       └── ui.js
 ├── pages/
-│   ├── MovieList.jsx
-│   └── MovieDetail.jsx
-├── services/
-│   └── tmdb.js
+│   ├── Home.jsx
+│   ├── Movie.jsx
+│   └── NotFound.jsx
+├── styles/
+│   ├── GlobalStyle.jsx
+│   └── theme.jsx
 ├── App.jsx
-├── main.jsx
-└── styles/
+└── main.jsx
 ```
+
 ### <a id="pages--routes"></a> 🧭 Pages & Routes
-| Route | Description |
+| Route        | Description                                          |
+| ------------ | ---------------------------------------------------- |
+| `/`          | Displays a grid of popular movies                    |
+| `/movie/:id` | Displays detailed information about a selected movie |
+| `/notfound`  | Custom Not Found page                                |
+| `*`          | Catch-all route for unknown URLs                     |
 
 ### <a id="data-flow-overview"></a> 🔄 Data Flow Overview
-#### Movie List Page
-- Fetches a list of movies from TMDB
-- Stores data in state
-- Renders movie cards
-- Each card links to `/movies/:id`
+#### Home Page
+- Fetches popular movies from TMDB using useEffect
+- Stores results in local state with useState
+- Renders a grid of MovieCard components
+- Each card links to /movie/:id
 
 #### Movie Detail Page
-- Reads `id` from URL using `useParams`
-- Fetches detailed movie data from TMDB
-- Handles loading and error states
-- Renders movie information
+- Reads id from the URL using useParams
+- Fetches movie details from TMDB
+- Handles:
+- Loading state:
+  - API errors
+  - 404 responses (redirects to /notfound)
+  - Renders movie details via MovieInfo
 
 ### 🔑 API Usage
-Tabell här
+The application uses The Movie Database (TMDB) API to fetch movie data.
+
+| Purpose              | Endpoint                                        |
+| -------------------- | ----------------------------------------------- |
+| Fetch popular movies | `https://api.themoviedb.org/3/movie/popular`    |
+| Fetch movie details  | `https://api.themoviedb.org/3/movie/{movie_id}` |
+
+#### Authentication
+
+#### Image handling
+
+TMDB returns partial image paths (e.g. poster_path, backdrop_path).
+To render images, URLs are constructed using the TMDB image base URL and a chosen size:
+
+``` text
+https://image.tmdb.org/t/p/original${image_path}
+```
+
 
 ## <a id="run"></a> ▶️ Run Locally
 ```bash
@@ -120,23 +162,30 @@ npm run dev
 
 ## <a id="roadmap"></a> 🚗 Roadmap
 ### Planning stage
-Berätta kort om planeringen  
-<a href="/PLANNING.md">📄PLANNING.md</a>
+The planning phase focused on understanding the project brief, API structure, and routing strategy.
+
+- Reviewed Technigo project requirements
+- Explored the TMDB API and available endpoints
+- Planned application routes (/, /movie/:id, /notfound)
+- Sketched component structure and data flow
+- Identified required and stretch goals
+
+📄 Planning documentation:
+<a href="/PLANNING.md">PLANNING.md</a>
 
 ### Excecution 
 Här kan du beskriva hur projektet genomfördes: designbeslut, kodstruktur, state‑hantering och eventuella utmaningar.
 
 ### Retrospect
-Samla retrospektiva reflektioner, lärdomar, tekniska insikter och förbättringsidéer.
+WIP
 
 ## <a id="authors"></a> 🧑‍💻 Authors
-### Your Name
--  [GitHub](https://www.github.com/) 
--  [LinkedIn](https://www.linkedin.com/)
+### Mikaela Sturk
+-  [GitHub](https://www.github.com/mikaelasturk) 
+-  [LinkedIn](https://www.linkedin.com/mikaelasturk)
 
-### Pair Programmer Name
+### Emil Florén
 -  [GitHub](https://www.github.com/) 
--  [LinkedIn](https://www.linkedin.com/)
 
 ## <a id="license"></a> 📄 License
 This project was created as part of a Technigo course assignment.  
