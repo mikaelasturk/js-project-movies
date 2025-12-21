@@ -38,4 +38,24 @@ Example route:
 - Add a dropdown to toggle between popular, upcoming and new releases.
 - Use extra API data (collections, genres, companies) to create links to more details.
 
+## Map out components
+Home page:
+Svart bakgrund
+Grid med
+MovieCards med omslag av film
+Moviecard är länk till movie page ()
+
+On hover: 
+Skugga över bildern
+H1 med titel
+P med Releasedatum
+
+Moviepage:
+Bakgrund med affish (från API)
+Button - SVG pil, tillbaka till home
+IMG med omslag
+H1 titel 
+P - Rating
+P - beskrivning
+
 ##  TODO -----------> <a href="TODO.md">here</a>

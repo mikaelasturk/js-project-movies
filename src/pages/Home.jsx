@@ -21,7 +21,7 @@ const GridWrapper = styled.div`
   }
 `
 
-const loaderTime = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+// const loaderTime = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 export const Home = () => {
   const [movies, setMovies] = useState([])
@@ -41,7 +41,7 @@ export const Home = () => {
           throw new Error('Failed to fetch movies')
        }
         const data = await response.json()
-        await loaderTime(2000)
+        // await loaderTime(2000)
         setMovies(data.results)
 
       } catch (error) {

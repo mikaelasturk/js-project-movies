@@ -2,9 +2,6 @@ import { Image, Tag } from '../ui/ui';
 import { MovieTitle, BodyText } from '../typography/typography';
 import styled from 'styled-components';
 
-
-
-
 const InfoLayout = styled.div`
   display: flex;
   flex-direction: column;
@@ -14,7 +11,7 @@ const InfoLayout = styled.div`
     flex-direction: row;
     align-items: flex-end;
     gap: 16px;
-    }
+  }
 `
 
 const FlexWrapperRow = styled.div`

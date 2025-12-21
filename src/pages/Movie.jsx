@@ -38,7 +38,7 @@ const FlexWrapperRow = styled.div`
   }
 `
 
-const loaderTime = (ms) => new Promise((resolve) => setTimeout(resolve, ms)) 
+// const loaderTime = (ms) => new Promise((resolve) => setTimeout(resolve, ms)) 
 
 export const Movie = () => {
   const [movieDetails, setMovieDetails] = useState(null)
@@ -69,7 +69,7 @@ export const Movie = () => {
 
         const data = await response.json()
 
-        await loaderTime(2000)
+        // await loaderTime(2000)
         setMovieDetails(data)
       } catch (error) {
         console.error('Error fetching movies:', error)
