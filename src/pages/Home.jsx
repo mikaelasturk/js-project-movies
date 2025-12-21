@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { MovieCard } from '../components/cards/cards'
+import { SpinnerLoader } from '../components/ui/ui'
 
 const GridWrapper = styled.div`
   display: grid;  
@@ -20,28 +21,6 @@ const GridWrapper = styled.div`
   }
 `
 
-const SpinnerWrap = styled.div`
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  background: #000;
-`
-
-const Spinner = styled.div`
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 4px solid rgba(255, 255, 255, 0.25);
-  border-top-color: rgba(255, 255, 255, 0.95);
-  animation: spin 0.9s linear infinite;
-
-  @keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
-  }
-`
-
 const loaderTime = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 export const Home = () => {
@@ -50,7 +29,7 @@ export const Home = () => {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    const API_URL_POPULAR = `https://api.themoviedb.org/3/movie/popular?api_key=a58868b333ba608ab720ea1d3cd907f2&language=en-US&page=1`
+    const API_URL_POPULAR = `https://api.themoviedb.org/3/movie/popular?api_key=a58868b333ba608ab720ea1d3cd907f2&language=en-US&`
 
     const fetchMovies = async () => {
       try {
@@ -76,9 +55,7 @@ export const Home = () => {
   }, [])
 
   if (loading) return (
-    <SpinnerWrap>
-      <Spinner />
-    </SpinnerWrap>
+    <SpinnerLoader />
   )                   
   if (error) return <p>{error}</p>
 

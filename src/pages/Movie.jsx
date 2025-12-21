@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, Navigate } from "react-router-dom";
 import styled from "styled-components";
 import { NotFound } from "../pages/pages"; 
 import { MovieInfo } from "../components/cards/cards"
+import { SpinnerLoader } from "../components/ui/ui"; 
 import { BodyText } from "../components/typography/typography";
 import { Svg } from "../components/ui/ui";
 
@@ -37,28 +38,6 @@ const FlexWrapperRow = styled.div`
   }
 `
 
-const SpinnerWrap = styled.div`
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  background: #000;
-`
-
-const Spinner = styled.div`
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 4px solid rgba(255, 255, 255, 0.25);
-  border-top-color: rgba(255, 255, 255, 0.95);
-  animation: spin 0.9s linear infinite;
-
-  @keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
-  }
-`
-
 const loaderTime = (ms) => new Promise((resolve) => setTimeout(resolve, ms)) 
 
 export const Movie = () => {
@@ -89,6 +68,7 @@ export const Movie = () => {
         }
 
         const data = await response.json()
+
         await loaderTime(2000)
         setMovieDetails(data)
       } catch (error) {
@@ -103,11 +83,9 @@ export const Movie = () => {
   }, [id])
 
   if (loading) return (
-    <SpinnerWrap>
-      <Spinner />
-    </SpinnerWrap>
+   <SpinnerLoader />
   )
-  if (error === 'notfound') return <NotFound />
+  if (error === 'notfound') return <Navigate to="/notfound" replace />
   if (error) return <p>{error}</p>
  
   return (
