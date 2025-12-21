@@ -1,4 +1,4 @@
-# 🎬 Movies AppTemplate to use for school projects
+# 🎬 Movies App
 
 A responsive multi-page React application built with React Router and The Movie Database (TMDB) API.
 The app allows users to browse popular movies and view detailed information for each title via dynamic routes.
