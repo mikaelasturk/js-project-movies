@@ -41,7 +41,7 @@ export const Home = () => {
           throw new Error('Failed to fetch movies')
        }
         const data = await response.json()
-        // await loaderTime(2000)
+        // await loaderTime(100000)
         setMovies(data.results)
 
       } catch (error) {

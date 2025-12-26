@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 import { BodyText } from '../typography/BodyText'
 
-//TODO add text "Loading..." below the spinner with animation on dots
-
 const Spinner = styled.div`
   width: 44px;
   height: 44px;
@@ -20,15 +18,42 @@ const Spinner = styled.div`
 
 const SpinnerWrap = styled.div`
   min-height: 100vh;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
   background: #000;
 `
+
+const LoadingDots = styled.div`
+  width: 9ch; /* fast bredd: "Loading..." = 9 tecken */
+  text-align: left;
+  /* font-variant-numeric: tabular-nums; */
+  color: inherit;
+  font-size: 24px;
+
+  &::after {
+    content: 'Loading';
+    animation: dots 3.2s steps(4, end) infinite;
+  }
+
+  @keyframes dots {
+    0%   { content: 'Loading'; }
+    25%  { content: 'Loading.'; }
+    50%  { content: 'Loading..'; }
+    75%  { content: 'Loading...'; }
+    100% { content: 'Loading'; }
+  }
+`
+
+
 export const SpinnerLoader = () => {
   return (
     <SpinnerWrap>
       <Spinner />
-      {/* <BodyText text="Loading..." /> */}
+      <LoadingDots aria-label="Loading" />
     </SpinnerWrap>
+     
   )
 }
